@@ -1,14 +1,57 @@
-package pages;
+package pages.Darksy;
 
 import org.openqa.selenium.By;
+import pages.Base;
 
 import java.util.ArrayList;
 
-public class DarkSkyHome extends Base{
+public class DarkSkyHome extends Base {
 
     By currentTempText = By.xpath("//span[@class='summary swap']");
     By timelineTempText = By.xpath("//span[@class='first']//span");
     By timeListRaw = By.xpath("//span[@class='hour']/span");
+
+    By lowestTempFront = By.xpath("//span[@class='low-temp-text']");
+    By highestTempFront = By.xpath("//span[@class='high-temp-text']");
+
+    By lowestTempToday = By.xpath("//a[@data-day='0']//span[@class='minTemp']");
+    By highestTempToday = By.xpath("//a[@data-day='0']//span[@class='maxTemp']"); // 104˚
+
+    By darkskyAPI = By.xpath("//a[normalize-space()='Dark Sky API']");
+
+    public void clickDarkSkyAPI()
+    {
+        clickOn(darkskyAPI);
+    }
+
+    public ArrayList<String> getTodaysTemp()
+    {
+        String lowTemp = getTextFromElement(lowestTempToday).split("˚") [0];   // 69˚
+        // ==> {"69"}
+        String highTemp = getTextFromElement(highestTempToday).split("˚") [0];   // 104˚
+
+        ArrayList<String> tempList = new ArrayList<>();
+        tempList.add(lowTemp);
+        tempList.add(highTemp);
+
+        return tempList;
+    }
+
+
+
+    public ArrayList<String> getFrontTemp()
+    {
+        String lowTemp = getTextFromElement(lowestTempFront).split("˚") [0];   // 69˚
+        // ==> {"69"}
+        String highTemp = getTextFromElement(highestTempFront).split("˚") [0];   // 104˚
+
+        ArrayList<String> tempList = new ArrayList<>();
+        tempList.add(lowTemp);
+        tempList.add(highTemp);
+
+        return tempList;
+    }
+
 
     public ArrayList<Integer> getTimelist()
     {

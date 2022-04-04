@@ -3,7 +3,7 @@ package stepdefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import pages.DarkSkyHome;
+import pages.Darksy.DarkSkyHome;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -66,4 +66,14 @@ public class DarksySD {
     }
 
 
+    @Then("I verify today's lowest and highest temp is displayed correctly")
+    public void iVerifyTodaySLowestAndHighestTempIsDisplayedCorrectly() {
+
+        ArrayList<String> frontTempList = darkSkyHome.getFrontTemp();
+        ArrayList<String> todaysTempList = darkSkyHome.getTodaysTemp();
+        System.out.println("expected="+frontTempList);
+        System.out.println("actual="+todaysTempList);
+
+        Assert.assertEquals("Temperatures are not correcct",frontTempList,todaysTempList);
+    }
 }
