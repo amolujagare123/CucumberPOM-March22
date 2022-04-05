@@ -8,7 +8,7 @@ Feature: All bookings.com scenarios
     Then I verify system displays only <stars> hotels on search result
     Examples:
       | stars   |
-    #  | 5 stars |
+    #   | 5 stars |
      | 4 stars |
     #  | 3 stars |
 
